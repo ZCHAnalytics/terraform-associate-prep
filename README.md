@@ -11,7 +11,6 @@
 </p>
 <p align="left">
 	<img src="https://img.shields.io/badge/terraform-%235835CC.svg?style=plastic&logo=terraform&logoColor=white" alt="Terraform">
-	<img src="https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=plastic&logo=jupyter&logoColor=white alt="Jupyter">
 </p>
 <hr>
 
