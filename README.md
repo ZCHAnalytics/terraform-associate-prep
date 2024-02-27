@@ -15,6 +15,16 @@
 <hr>
 
 
-# 🔗 Content
+# 🔗 Content - the project documentation is in progress...
 
-# Terraform
+# This project creates three Terraform files to deploy web app on AWS
+
+Amazon Web Services
+- IAM , create a user to use for terraform project
+- generate credentials - Access Keys	for Third Partyservice
+Terraform
+- create a free Terraform Cloud account
+- create an organisation 
+- set up workspace
+- set version control flow - choose repo on Github
+
