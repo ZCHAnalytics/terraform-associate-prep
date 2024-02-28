@@ -17,7 +17,7 @@
 
 # 🔗 Content - the project documentation is in progress...
 
-# This project creates three Terraform files to deploy a web app on AWS
+# Deploy a web app on AWS
 
 ## 0. Credentials
 - Create AWS IAM user with necessary access policies
