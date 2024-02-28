@@ -32,7 +32,7 @@ resource "aws_security_group_rule" "web_inbound" {
   from_port         = 80                            # Port 80 is the default port for HTTP traffic 
   to_port           = 80                         
   protocol          = "tcp"                         # Protocol "tcp" explicitly specified for security
-  cidr_blocks       = ["${TF_VAR_ip_address}"]      # List of allowed IP addresses
+  cidr_blocks       = [var.my_ip_address]      # List of allowed IP addresses
   security_group_id = aws_security_group.webpage.id # ID of the security group
 }
 
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "web_secure_inbound" {
   from_port         = 443  # Port 443 is the default port for HTTPS traffic           
   to_port           = 443         
   protocol          = "tcp"           
-  cidr_blocks       = ["${TF_VAR_ip_address}"]   
+  cidr_blocks       = [var.my_ip_address]
   security_group_id = aws_security_group.webpage.id  
 }
 
@@ -52,6 +52,6 @@ resource "aws_security_group_rule" "web_outbound" {
   from_port         = 0         # Wildcard value allows all outbound traffic
   to_port           = 0               
   protocol          = "-1"      # "-1" allows all outbound traffic from the security group
-  cidr_blocks       = ["${TF_VAR_ip_address}"]  
+  cidr_blocks       = [var.my_ip_address]
   security_group_id = aws_security_group.webpage.id 
 }
