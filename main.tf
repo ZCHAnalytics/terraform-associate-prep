@@ -41,12 +41,12 @@ module "alb"  {
   load_balancer_type = "application"
   subnets = module.web_vpc.public_subnets
   security_groups = module.web_sg.security_group_id
-    target_groups = [
+  target_groups = [
     {
       name_prefix      = "web"
       backend_protocol = "HTTP"
       backend_port     = 80
-      
+    
       target_type      = "instance"
       targets = {
         my_target  = {
