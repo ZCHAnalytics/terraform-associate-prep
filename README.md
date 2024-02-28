@@ -31,8 +31,5 @@
 
 ## 2. Add Provider
 
-
-
-
-
+## 3. Add bash file
 

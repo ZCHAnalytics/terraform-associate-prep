@@ -121,7 +121,7 @@ resource "aws_instance" "terra_ec2" {
     network_interface_id = aws_network_interface.terra_net_interface.id
   }
   
-  user_data = file("${path.module}/user_data.sh")
+  user_data = file("${path.module}/file.sh")
   
   tags = {
     name = "web_server"
