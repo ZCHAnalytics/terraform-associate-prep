@@ -1,7 +1,7 @@
 data "aws_ami" "web_ami" {  # Data source for retrieving the latest Bitnami Tomcat AMI
   most_recent = true
   filter {                  # Filter AMIs by name
-    name   = "name"
+    name   = "name_regex"
     values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
   }
   filter {                  # Filter AMIs by virtualization type
@@ -26,49 +26,6 @@ module "web_vpc" {
     Environment = "dev"
   }
 }
-# Resource definition for launching an EC2 instance
-resource "aws_instance" "web_app" {       
-  ami           = data.aws_ami.web_ami.id # Use the AMI retrieved from the data source
-  instance_type = var.instance_type       # Specify the instance type using a variable
-  vpc_security_group_ids = module.web_sg_new.security_group_id  
-  subnet_id = module.web_vpc.public_subnets[0]
-}
-# Add load balancer 
-module "alb"  {
-  source = "terraform-aws-modules/alb/aws"
-  name    = "my-alb"
-  vpc_id  = module.web_vpc.vpc_id
-  load_balancer_type = "application"
-  subnets = module.web_vpc.public_subnets
-  security_groups = [module.web_sg.security_group_id]
-  target_groups = [
-    {
-      name_prefix      = "web"
-      backend_protocol = "HTTP"
-      backend_port     = 80
-      target_type      = "instance"
-      targets = {
-        my_target  = {
-          target_id = aws_instance.web.id
-          port = 80 
-        }
-      }
-    }  
-  ]
-  tags = {
-    Environment = "dev"
-  }
-}
-
-resource "aws_lb_listener" "http" {
-  load_balancer_arn = module.alb.load_balancer_arn
-  port                = "80"
-  protocol            = "HTTP"
-  default_action {
-    type = "forward"
-    target_group_arn = module.alb.target_group_arns[0]
-  }
-}
 
 module "web_sg_new" {
   source  = "terraform-aws-modules/security-group/aws"
@@ -79,5 +36,48 @@ module "web_sg_new" {
   ingress_cidr_blocks = ["0.0.0.0/0"]
   egress_rules        = ["all-all"]
   egress_cidr_blocks  = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.web_sg.id # ID of the security group
+  security_group_id   = module.web_sg_new.security_group_id # ID of the security group
 }
+# Resource definition for launching an EC2 instance
+resource "aws_instance" "web_app" {       
+  ami           = data.aws_ami.web_ami.id # Use the AMI retrieved from the data source
+  instance_type = var.instance_type       # Specify the instance type using a variable
+  vpc_security_group_ids = [module.web_sg_new.security_group_id]  
+  subnet_id = module.web_vpc.public_subnets[0]
+}
+# Add load balancer 
+module "alb"  {
+  source = "terraform-aws-modules/alb/aws"
+  name    = "my-alb"
+  vpc_id  = module.web_vpc.vpc_id
+  load_balancer_type = "application"
+  subnets = module.web_vpc.public_subnets
+  security_groups = [module.web_sg_new.security_group_id]
+  target_groups = [
+    {
+      name_prefix      = "web"
+      backend_protocol = "HTTP"
+      backend_port     = 80
+      target_type      = "instance"
+      targets = {
+        my_target  = {
+          target_id = aws_instance.web_app.id
+          port = 80 
+        }
+      }
+    }  
+  ]
+  tags = {
+    Environment = "dev"
+  }
+}
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = module.alb.load_balancer_arn
+  port                = "80"
+  protocol            = "HTTP"
+  default_action {
+    type = "forward"
+    target_group_arn = module.alb.target_group_arns[0]
+  }
+}
+
