@@ -3,7 +3,7 @@ variable "instance_type" {
   default     = "t3.nano"
 }
 
-variable "ip_address" {
+variable "TF_VAR_ip_address" {
   type        = string
   description = "The IP address to be used"
 }
