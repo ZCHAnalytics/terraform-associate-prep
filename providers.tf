@@ -9,12 +9,7 @@ terraform {
 provider "aws" {
   region  = var.region
   profile = "default"
-  access_key = var.TF_VAR_AWS_ACCESS_KEY_ID
-  secret_key = var.TF_VAR_AWS_SECRET_ACCESS_KEY
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
 
 }
-variable "TF_VAR_AWS_SECRET_ACCESS_KEY" {
-  description = "AWS Secret Access Key"
-}
-
-variable "TF_VAR_AWS_ACCESS_KEY_ID" {}
