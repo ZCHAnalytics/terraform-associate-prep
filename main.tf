@@ -40,13 +40,12 @@ module "alb"  {
   vpc_id  = module.web_vpc.vpc_id
   load_balancer_type = "application"
   subnets = module.web_vpc.public_subnets
-  security_groups = module.web_sg.security_group_id
+  security_groups = [module.web_sg.security_group_id]
   target_groups = [
     {
       name_prefix      = "web"
       backend_protocol = "HTTP"
       backend_port     = 80
-    
       target_type      = "instance"
       targets = {
         my_target  = {
@@ -56,16 +55,16 @@ module "alb"  {
       }
     }  
   ]
-  https_listeners = [
+  http_tcp_listeners = [
     {
-      port = "80"
-      protocol = "HTTP"
-      target_group_index = 0
+      port                = "80"
+      protocol            = "HTTP"
+      target_group_index  = 0
     }
   ]
 
   tags = {
-    Environment = "Test"
+    Environment = "dev"
   }
 }
 
