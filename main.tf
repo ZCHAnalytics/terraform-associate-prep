@@ -8,7 +8,7 @@ data "aws_ami" "web_ami" {  # Data source for retrieving the latest Bitnami Tomc
     name   = "virtualization-type"
     values = ["hvm"]
   }
-  owners = ["979382823631"] # Bitnami # Specify the owner of the AMIs (Bitnami)
+  owners = ["979382823631"] # Specify the owner of the AMIs (Bitnami)
 }
 # Data source for retrieving the default VPC
 data "aws_vpc" "vpc_nm" {   
