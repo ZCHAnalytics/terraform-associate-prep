@@ -3,6 +3,7 @@ variable "instance_type" {
   default     = "t3.nano"
 }
 
-variable "my_ip_address" {
-  description = "My IP address"
+variable "ip_address" {
+  type        = string
+  description = "The IP address to be used"
 }
