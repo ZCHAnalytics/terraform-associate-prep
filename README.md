@@ -31,5 +31,9 @@
 
 ## 2. Add Provider
 
-## 3. Add bash file
+## 3. Add Configuration Bash file 
+- Update Package Lists
+- Install Apache HTTP Server (apache2)
+- Start Apache Service
+- Create Index File and save to the default web server directory (/var/www/html/index.html)
 
