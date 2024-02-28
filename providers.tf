@@ -13,4 +13,8 @@ provider "aws" {
   secret_key = var.TF_VAR_AWS_SECRET_ACCESS_KEY
 
 }
+variable "TF_VAR_AWS_SECRET_ACCESS_KEY" {
+  description = "AWS Secret Access Key"
+}
 
+variable "TF_VAR_AWS_ACCESS_KEY_ID" {}
