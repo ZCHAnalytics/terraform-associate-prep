@@ -67,17 +67,16 @@ module "alb"  {
       }
     }  
   ]
+  http_tcp_listeners = [
+    {
+      port                = "80"
+      protocol            = "HTTP"
+      target_group_index  = 0
+    }
+  ]
   tags = {
     Environment = "dev"
   }
 }
-resource "aws_lb_listener" "http" {
-  load_balancer_arn = module.alb.load_balancer_arn
-  port                = "80"
-  protocol            = "HTTP"
-  default_action {
-    type = "forward"
-    target_group_arn = module.alb.target_group_arns[0]
-  }
-}
+
 
