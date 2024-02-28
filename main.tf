@@ -26,47 +26,56 @@ module "web_vpc" {
     Environment = "dev"
   }
 }
-
 # Resource definition for launching an EC2 instance
 resource "aws_instance" "web_app" {       
   ami           = data.aws_ami.web_ami.id # Use the AMI retrieved from the data source
   instance_type = var.instance_type       # Specify the instance type using a variable
-  vpc_security_group_ids = [aws_security_group.webpage.id] # Add a list of security group IDs to the instance 
+  vpc_security_group_ids = module.web_sg_new.security_group_id  
   subnet_id = module.web_vpc.public_subnets[0]
-
 }
-# Add Security Group
-resource "aws_security_group" "webpage" { 
-  name = "webpage"
-  vpc_id = module.web_vpc.vpc_id
+# Add load balancer 
+module "alb"  {
+  source = "terraform-aws-modules/alb/aws"
+  name    = "my-alb"
+  vpc_id  = module.web_vpc.vpc_id
+  load_balancer_type = "application"
+  subnets = module.web_vpc.public_subnets
+  security_groups = module.web_sg.security_group_id
+    target_groups = [
+    {
+      name_prefix      = "web"
+      backend_protocol = "HTTP"
+      backend_port     = 80
+      
+      target_type      = "instance"
+      targets = {
+        my_target  = {
+          target_id = aws_instance.web.id
+          port = 80 
+        }
+      }
+    }  
+  ]
+  http_tcp_listeners = [
+    {
+      port = "80"
+      protocol = "HTTP"
+      target_group_index = 0
+    }
+  ]
+  tags = {
+    Environment = "Test"
+  }
 }
 
+module "web_sg_new" {
+  source  = "terraform-aws-modules/security-group/aws"
+  name    = "new_sg"
+  vpc_id  = module.web_vpc.vpc_id
 # Rule for HTTP-inbound traffic
-resource "aws_security_group_rule" "web_inbound" {
-  type              = "ingress"                     # Type of rule (ingress for inbound traffic)
-  from_port         = 80                            # Port 80 is the default port for HTTP traffic 
-  to_port           = 80                         
-  protocol          = "tcp"                         # Protocol "tcp" explicitly specified for security
-  cidr_blocks       = [var.my_ip_address]           # List of allowed IP addresses
-  security_group_id = aws_security_group.webpage.id # ID of the security group
-}
-
-# Rule for HTTPS-inbound traffic
-resource "aws_security_group_rule" "web_secure_inbound" {
-  type              = "ingress"       
-  from_port         = 443  # Port 443 is the default port for HTTPS traffic           
-  to_port           = 443         
-  protocol          = "tcp"           
-  cidr_blocks       = [var.my_ip_address]
-  security_group_id = aws_security_group.webpage.id  
-}
-
-# Rule for outbound traffic
-resource "aws_security_group_rule" "web_outbound" {
-  type              = "egress"  # Type of rule (egress for outbound traffic)
-  from_port         = 0         # Wildcard value allows all outbound traffic
-  to_port           = 0               
-  protocol          = "-1"      # "-1" allows all outbound traffic from the security group
-  cidr_blocks       = [var.my_ip_address]
-  security_group_id = aws_security_group.webpage.id 
+  ingress_rules       = ["http-80-tcp", "https-443-tcp"]
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+  egress_rules        = ["all-all"]
+  egress_cidr_blocks  = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.web_sg.id # ID of the security group
 }
