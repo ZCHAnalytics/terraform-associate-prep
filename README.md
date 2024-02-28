@@ -17,7 +17,7 @@
 
 # 🔗 Content - the project documentation is in progress...
 
-# This project creates three Terraform files to deploy web app on AWS
+# This project creates three Terraform files to deploy a web app on AWS
 
 Amazon Web Services
 - IAM , create a user to use for terraform project
@@ -27,4 +27,5 @@ Terraform
 - create an organisation 
 - set up workspace
 - set version control flow - choose repo on Github
+- 
 
