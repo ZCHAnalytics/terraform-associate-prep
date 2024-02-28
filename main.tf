@@ -1,11 +1,10 @@
- Create a vpc 
+# provision vpc 
 resource "aws_vpc" "terra_vpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
     name = "my_vpc"
   }
 }
-# Create an internet gateway
 resource "aws_internet_gateway" "terra_IGW" {
   vpc_id = aws_vpc.terra_vpc.id
   tags = {
@@ -98,19 +97,19 @@ resource "aws_security_group" "terra_SG" {
   }
 }
 
-# create a network interface with private ip from step 4
+# network interface with private ip
 resource "aws_network_interface" "terra_net_interface" {
   subnet_id = aws_subnet.terra_subnet.id
   security_groups = [aws_security_group.terra_SG.id]
 }
-# assign a elastic ip to the network interface created in step 7
+# elastic ip to the network interface
 resource "aws_eip" "terra_eip" {
-  vpc = true
+  domain = "vpc"
   network_interface = aws_network_interface.terra_net_interface.id
   associate_with_private_ip = aws_network_interface.terra_net_interface.private_ip
   depends_on = [aws_internet_gateway.terra_IGW, aws_instance.terra_ec2]
 }
-# create an ubuntu server and install/enable apache2
+# apache2 on an ubuntu server
 resource "aws_instance" "terra_ec2" {
   ami = var.ami
   instance_type = var.instance_type

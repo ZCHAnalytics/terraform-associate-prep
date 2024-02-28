@@ -17,15 +17,22 @@
 
 # 🔗 Content - the project documentation is in progress...
 
-# This project creates three Terraform files to deploy a web app on AWS
+## 0. Credentials
+### 0.1. Create IAM user in Amazon Web Services
+### 0.2. Generate Access Key in Amazon Web Services 
+### 0.3. Add credentials to Terraform Workspace as sensitive environment variables
 
-Amazon Web Services
-- IAM , create a user to use for terraform project
-- generate credentials - Access Keys	for Third Partyservice
-Terraform
-- create a free Terraform Cloud account
-- create an organisation 
-- set up workspace
-- set version control flow - choose repo on Github
-- 
+## 1. Create Security Rules 
+### 1.1. Virtual Private Cloud 
+### 1.2. Add Security Group
+### 1.3. Add Security Rules to Security Group
+
+### 1.4. Add Security Group to EC3 instance
+
+## 2. Add Provider
+
+
+
+
+
 
