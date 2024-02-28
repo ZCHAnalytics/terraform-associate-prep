@@ -9,6 +9,6 @@ terraform {
 provider "aws" {
   region  = var.region
   profile = "default"
-  access_key = terraform.workspace.variables["aws_access_key_id"]
-  secret_key = terraform.workspace.variables["aws_secret_access_key"]
+  access_key = var.AWS_ACCESS_KEY_ID
+  secret_key = var.AWS_SECRET_ACCESS_KEY
 }
