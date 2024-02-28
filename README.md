@@ -28,16 +28,14 @@
 
 - create VPC
 - create security group
-- create web traffic rules for inbound and outbound traffic 
+- create web traffic rules
 - add security group to instance definition block
+
+## 3. Autoscaling
+- terrafrom-aws-vpc module 
 
 ## 2. Terrafrom Runs
 
 - Initiate Terrafrom Plan and Apply
 - Check the deployment of a Tomcat web server
 
-## 3. Autoscaling
-
-- terrafrom-aws-vpc module 
-- edit VPC, instance and security group modules
-- 
