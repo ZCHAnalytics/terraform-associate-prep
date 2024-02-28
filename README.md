@@ -19,13 +19,25 @@
 
 # This project creates three Terraform files to deploy a web app on AWS
 
-Amazon Web Services
-- IAM , create a user to use for terraform project
-- generate credentials - Access Keys	for Third Partyservice
-Terraform
-- create a free Terraform Cloud account
-- create an organisation 
-- set up workspace
-- set version control flow - choose repo on Github
-- 
+## 0. Credentials
+- Create AWS IAM user with necessary access policies
+- Generate AWS access keys for Third Party Service
+- Add access keys and local IP address as sensitive environment variables in Terraform Workspace
 
+## 1. Web Traffic Security Rules
+
+- create VPC
+- create security group
+- create web traffic rules for inbound and outbound traffic 
+- add security group to instance definition block
+
+## 2. Terrafrom Runs
+
+- Initiate Terrafrom Plan and Apply
+- Check the deployment of a Tomcat web server
+
+## 3. Autoscaling
+
+- terrafrom-aws-vpc module 
+- edit VPC, instance and security group modules
+- 
