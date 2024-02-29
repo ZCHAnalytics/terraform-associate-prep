@@ -17,6 +17,21 @@
 
 # 🔗 Content - the project documentation is in progress...
 
+# Basic Configuration Files with Codes and Visuals
+ - sample code for initialising a docker NGINX engine
+ - sample code for initialising an instance on Amazon Web Services 
+ - sample code for changing Ubuntu image in the infrastructure 
+ - sample code for defining outputs
+ - sample code for defining variables
+ - sample code for remote state configuration in Terraform Cloud Workspace 
+
+# Basics of Workflow with Terraform CLI with Visuals
+- sample codes
+- sample command for temporarily changing variables in CLI
+
+# Basics of Workflow with Version Control System - GitHub
+
+
 # Deploy a web app on AWS
 
 ## 0. Credentials
