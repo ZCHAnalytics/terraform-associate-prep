@@ -30,7 +30,13 @@
 - sample command for temporarily changing variables in CLI
 
 # Basics of Workflow with Version Control System - GitHub
-
+- update the remote repository endpoint 
+- remove or comment out the `cloud` configuration block in `terraform.tf` 
+- enable integration between Terraform Workspace and Github Repository
+- pass variable to Workspace with `auto.tfvars` file 
+- use a new branch for changes, push changes to new branch, create pull request, merge.
+- queue and apply "destroy plan" to release resources
+  
 
 # Deploy a web app on AWS
 
