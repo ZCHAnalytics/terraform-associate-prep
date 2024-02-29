@@ -1,5 +1,5 @@
 terraform {
-
+/*
   cloud {
     organization = "zchanalytics"
 
@@ -7,7 +7,7 @@ terraform {
       name = "awesome-world"
     }
   }
-
+*/
   required_providers {
     aws = {
       source  = "hashicorp/aws"
