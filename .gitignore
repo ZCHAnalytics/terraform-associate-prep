@@ -1,2 +1,3 @@
 creds.tfvars
 creds.yaml
+terraform.auto.tfvars
