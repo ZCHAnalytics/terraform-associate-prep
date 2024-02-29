@@ -10,7 +10,7 @@ variable "my_ip_address" {
 
 variable "environment" {
   description = "Deployment environment"
-  type        = object ({
+  type = object({
     network_prefix = string
   })
   default = {
