@@ -17,19 +17,33 @@
 
 # 🔗 Content - the project documentation is in progress...
 
-# Basic Configuration Files with Codes and Visuals
- - sample code for initialising a docker NGINX engine
- - sample code for initialising an instance on Amazon Web Services 
- - sample code for changing Ubuntu image in the infrastructure 
- - sample code for defining outputs
- - sample code for defining variables
- - sample code for remote state configuration in Terraform Cloud Workspace 
+## Sample Configuration for Azure with Windows PowerShell CLI
 
-# Basics of Workflow with Terraform CLI with Visuals
-- sample codes
-- sample command for temporarily changing variables in CLI
+- setting up and testing the environment with NGINX server deployment 
+- modifying infrastructure
+- passing persistent or temporary variables
+- defining outputs
+- migrating states to Terraform Cloud
 
-# Basics of Workflow with Version Control System - GitHub
+
+## Sample Configuration for Docker with WSL Ubuntu CLI
+
+- creating conda environment
+- setting up and testing Docker environment
+
+## Sample Configuration Files for Amazon Web Services
+ - code for initialising a docker NGINX engine
+ - code for initialising an instance on Amazon Web Services 
+ - code for changing Ubuntu image in the infrastructure 
+ - code for defining outputs
+ - code for defining variables
+ - code for remote state configuration in Terraform Cloud Workspace 
+
+## Sample Workflow with Terraform CLI with Visuals
+- codes
+- passing temporary variables with CLI
+
+## Sample Workflow with Version Control System - GitHub
 - update the remote repository endpoint 
 - remove or comment out the `cloud` configuration block in `terraform.tf` 
 - enable integration between Terraform Workspace and Github Repository
@@ -38,7 +52,7 @@
 - queue and apply "destroy plan" to release resources
   
 
-# Deploy a web app on AWS
+## Deploy a web app on AWS
 
 ## 0. Credentials
 - Create AWS IAM user with necessary access policies
