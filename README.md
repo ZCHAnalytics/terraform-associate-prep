@@ -29,7 +29,9 @@
 ## Sample Configuration for Docker with WSL Ubuntu CLI
 
 - creating conda environment
-- setting up and testing Docker environment
+- setting up and testing Docker environment 
+- adding variables
+- adding outputs
 
 ## Sample Configuration Files for Amazon Web Services
  - code for initialising a docker NGINX engine
