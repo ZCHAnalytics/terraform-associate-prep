@@ -14,7 +14,7 @@
 </p>
 <hr>
 
-## Sample Configuration for Azure with Windows PowerShell CLI
+## Simple Configuration for Azure with Windows PowerShell CLI
 
 - setting up and testing the environment with NGINX server deployment 
 - modifying infrastructure
@@ -22,15 +22,14 @@
 - defining outputs
 - migrating states to Terraform Cloud
 
-
-## Sample Configuration for Docker with WSL Ubuntu CLI
+## Simple Configuration for Docker with WSL Ubuntu CLI
 
 - creating conda environment
 - setting up and testing Docker environment 
 - adding variables
 - adding outputs
 
-## Sample Configuration Files for Amazon Web Services
+## Simple Configuration Files for Amazon Web Services
  - code for initialising a docker NGINX engine
  - code for initialising an instance on Amazon Web Services 
  - code for changing Ubuntu image in the infrastructure 
@@ -38,11 +37,11 @@
  - code for defining variables
  - code for remote state configuration in Terraform Cloud Workspace 
 
-## Sample Workflow with Terraform CLI with Visuals
+## Simple Workflow with Terraform CLI with Visuals
 - codes
 - passing temporary variables with CLI
 
-## Sample Workflow with Version Control System - GitHub
+## Simple Workflow with Version Control System - GitHub
 - update the remote repository endpoint 
 - remove or comment out the `cloud` configuration block in `terraform.tf` 
 - enable integration between Terraform Workspace and Github Repository
