@@ -14,9 +14,6 @@
 </p>
 <hr>
 
-
-# 🔗 Content - the project documentation is in progress...
-
 ## Sample Configuration for Azure with Windows PowerShell CLI
 
 - setting up and testing the environment with NGINX server deployment 
