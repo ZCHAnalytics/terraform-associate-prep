@@ -1,5 +1,3 @@
-
-
 ## Prerequisites
 - Terraform v1.6+ installed locally.
 - An AWS account with local credentials configured for use with Terraform.
@@ -9,24 +7,25 @@
 ## Initialize your configuration
 
 terraform init
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/359bcea5-f708-461b-bd4c-dd37d5c4a625)
 
 ## Create a plan
 
- terraform plan -out "tfplan"
- Terraform created a plan and saved it in the tfplan file.
- Since you have not yet applied this configuration, Terraform plans to create all of the resources defined in it.
+$ terraform plan -out "tfplan"
+
+Terraform created a plan and saved it in the tfplan file.
 
 When you create a plan, Terraform checks your workspace for an existing state file. Since you have not yet applied this configuration, your workspace's state is empty, and Terraform plans to create all of the resources defined in your configuration.
 
 You can apply the saved plan file to execute these changes, but the contents of the plan are not in a human-readable format. Use the terraform show command to print out the saved plan.
 
-terraform show "tfplan"
+$ terraform show "tfplan"
 
 Terraform can also report the contents of the saved plan as JSON. This is often useful when using Terraform in automated pipelines, as you can use code to inspect the plan.
 
 Convert the saved plan into JSON, pass it to jq to format it, and save the output into a new file.
 
- terraform show -json "tfplan" | jq > tfplan.json
+$ terraform show -json "tfplan" | jq > tfplan.json
 
 ### Warning
 
@@ -37,7 +36,7 @@ Terraform plan files can contain sensitive data. Never commit a plan file to ver
 
 Terraform records the version of Terraform used to generate the plan, and the version of the plan file format. This will ensure that you use the same version to apply these changes when you use the saved plan.
 
-jq '.terraform_version, .format_version' tfplan.json
+$ jq '.terraform_version, .format_version' tfplan.json
 
 Review plan configuration
 
@@ -68,20 +67,16 @@ The planned_values object is a report of the differences between the "before" an
 
 ## Apply a saved plan
 
-terraform apply "tfplan"
+$ terraform apply "tfplan"
 
 ## Modify configuration
 Input variables let you easily update configuration values without having to edit your configuration files.
 
 Open the variables.tf file in the top-level configuration directory. Add the configuration below to define a new input variable to use for the hello module.
+
 Then, create a terraform.tfvars file, and set the new secret_key input variable value.
 
-terraform.tfvars
-Copy
-secret_key = "TOPSECRET"
-
 ### Warning
-
 Never commit .tfvars files to version control.
 
 Finally, update the hello module configuration in main.tf to reference the new input variable.
