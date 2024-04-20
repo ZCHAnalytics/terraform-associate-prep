@@ -26,6 +26,8 @@ Terraform can also report the contents of the saved plan as JSON. This is often 
 Convert the saved plan into JSON, pass it to jq to format it, and save the output into a new file.
 
 $ terraform show -json "tfplan" | jq > tfplan.json
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/52558c0a-725d-46c8-8c74-7a524eadd824)
+
 
 ### Warning
 
@@ -38,7 +40,9 @@ Terraform records the version of Terraform used to generate the plan, and the ve
 
 $ jq '.terraform_version, .format_version' tfplan.json
 
-Review plan configuration
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/72985d06-4830-42af-ab7e-22b42460830c)
+
+### Review plan configuration
 
 This configuration snapshot captures the versions of the providers recorded in your .terraform.lock.hcl file, ensuring that you use the same provider versions that generated the plan to apply it. Note that the configuration accounts for both the provider version used by the root module and child modules.
 
