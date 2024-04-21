@@ -7,6 +7,7 @@
 ## Initialize your configuration
 
 terraform init
+
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/359bcea5-f708-461b-bd4c-dd37d5c4a625)
 
 ## Create a plan
@@ -21,12 +22,15 @@ You can apply the saved plan file to execute these changes, but the contents of 
 
 $ terraform show "tfplan"
 
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/83a7b6b9-e042-4162-a040-e95529b572b6)
+
 Terraform can also report the contents of the saved plan as JSON. This is often useful when using Terraform in automated pipelines, as you can use code to inspect the plan.
 
 Convert the saved plan into JSON, pass it to jq to format it, and save the output into a new file.
 
 $ terraform show -json "tfplan" | jq > tfplan.json
-![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/52558c0a-725d-46c8-8c74-7a524eadd824)
+
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/fb3ca5c5-9058-4ab0-88ba-ef5612268650)
 
 
 ### Warning
@@ -95,12 +99,21 @@ $ terraform show -json tfplan-input-var | jq > tfplan-input-var.json
 
 ## Review new plan
 When you created this plan, Terraform determined that the working directory already contains a state file, and used that state to plan the resource changes.
-
 Since Terraform created this plan with existing resources and using input variables, your plan file has some new fields.
+jq '.terraform_version, .format_version' tfplan.json
 
-### Review plan input variables
+jq '.configuration.provider_config' tfplan.json
 
-### Review plan prior_state
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/f27b5668-871a-4718-a5cf-fb18fdfd413f)
+
+## Apply the saved plan
+
+terraform apply "tfplan"
+
+
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/a42b52d7-5157-40ae-9483-7a2cb1b1de55)
+
+## Modify configuration
 
 ### Review plan resource changes
 Now that your state file tracks resources, Terraform will take the existing state into consideration when it creates an execution plan. For example, the module.hello.random_pet.server object now contains data in both the before and after fields, representing the prior and desired configurations respectively.
