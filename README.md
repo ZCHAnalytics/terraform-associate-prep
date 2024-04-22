@@ -9,7 +9,8 @@
 <p>
 <hr>
 
-I am currently studying for Terraform Associate certification. I created this repository as a study aid. It also has a python script that tracks the number and percentage of completed modules. I also have covered extra modules as a way of trouble-shooting problems I encountered along the way. 
+I am currently studying for Terraform Associate certification and this repository is my study companion aid. Also, it got a python script that tracks my completed modules and updates this readme file. I also add markdown files with screenshots in modules folders. 
+There is also as lonesome'extra' folder with odd modules, not part of the Terraform associate collection, but which helped me trouble-shoot problems along the way! 
 
 # Terraform Associate Tutorials Completition Progress
 
