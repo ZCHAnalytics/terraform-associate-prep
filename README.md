@@ -9,14 +9,13 @@
 <p>
 <hr>
 
-I am currently studying for Terraform Associate certification. I created this repository as a study aid, with a python script that tracks the number of percentage of completed modules. 
+I am currently studying for Terraform Associate certification. I created this repository as a study aid. It also has a python script that tracks the number and percentage of completed modules. I also have covered extra modules as a way of trouble-shooting problems I encountered along the way. 
 
 # Terraform Associate Tutorials Completition Progress
 
 Currently, I completed 22 out of 37 modules (59.46%).
 
 # Study Modules
-
 - Module 1: What is Infrastructure as Code with Terraform? - Completed
 - Module 2: Lock and upgrade provider versions - Completed
 - Module 3: Build infrastructure - Completed
