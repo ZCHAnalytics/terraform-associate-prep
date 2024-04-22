@@ -1,25 +1,17 @@
-![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/518bce0e-80a4-4462-98b0-6ff1fcd3f70f)
-
+![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/4ada248e-da4b-4a57-ad95-f495c554d5f6)
 
 <p align="left">
-   <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=plastic&logoColor=white" alt="license">
+	<img src="https://img.shields.io/badge/terraform-%235835CC.svg?style=plastic&logo=terraform&logoColor=white" alt="Terraform">
+	<img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=plastic&logoColor=white" alt="license">
 	<img src="https://img.shields.io/github/last-commit/ZCHAnalytics/terraform-aws?style=plastic&color=0080ff" alt="last-commit">
 	<img src="https://img.shields.io/github/languages/top/ZCHAnalytics/terraform-aws?style=plastic&color=0080ff" alt="repo-top-language">
 	<img src="https://img.shields.io/github/languages/count/ZCHAnalytics/terraform-aws?style=plastic&color=0080ff" alt="repo-language-count">
-  
 <p>
-<p align="left">
-		<em>Developed with the tools below.</em>
-</p>
-<p align="left">
-	<img src="https://img.shields.io/badge/terraform-%235835CC.svg?style=plastic&logo=terraform&logoColor=white" alt="Terraform">
-</p>
 <hr>
 
-
-![alt text](image.png)
-
 I am currently studying for Terraform Associate certification. I created this repository as a study aid and keep track of my progress. 
+
+# Terraform Associate Tutorials 
 
 Currently, I completed xxx out of 37 modules.
 
