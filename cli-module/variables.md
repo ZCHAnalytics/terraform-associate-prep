@@ -14,12 +14,9 @@ type        = bool
 In the variables.tf file, we will declare the variables and then update the main.tf files to replace hard-coded values with newly created variables. 
 
 ## Use simple string variables
-
 In variables.tf we declare a string type variables named aws_region and the vpc_cidr_block.
 
 If we apply the updated configuration, there will be no change since the default values of these variables are the same as the hard-coded values they replaced.
-
-  `terraform apply`
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/50a8e948-9ab1-4067-add1-11c7f4129460)
 
@@ -32,23 +29,19 @@ type        = number
 
 ## Use a boolean variable to toggle VPN gateway support
 Use a bool type variable to control whether to configure a VPN gateway for the VPC. 
-
-  `enable_vpn_gateway = var.enable_vpn_gateway`
+```hcl
+enable_vpn_gateway = var.enable_vpn_gateway
+```
 
 ## Use list collection variable and slice() function to list subnets
-
 We will use list variables to set the private_subnets and public_subnets arguments for the VPC. In our variables.tf file, the count of subnets is currently set to 2.
 Users can specify a different number for the set of public and private subnets they want without worrying about defining CIDR blocks. These subsets will be then extracted with slice() function. 
-
-`private_subnets = slice(var.private_subnet_cidr_blocks, 0, var.private_subnet_count)` 
-`public_subnets  = slice(var.public_subnet_cidr_blocks, 0, var.public_subnet_count)` 
-
+```hcl
+private_subnets = slice(var.private_subnet_cidr_blocks, 0, var.private_subnet_count)
+public_subnets  = slice(var.public_subnet_cidr_blocks, 0, var.public_subnet_count) 
+```
 ## Map resource tags
-
-Each of the resources and modules declared in main.tf includes two tags: project_name and environment. Assign these tags with a map variable type.
-
-  `terraform apply`
-
+Each of the resources and modules declared in main.tf includes two tags: project_name and environment. Assign these tags with a map variable type and run apply operation.
 No changes applied, again!
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/a7664282-7169-4948-abf7-26685ac77c26)
@@ -58,29 +51,26 @@ Terraform requires a value for every variable. There are several ways to assign 
 
 ### Use command line flag `-var`
 In the examples so far, all of the variable definitions have included a default value. Add a new variable without a default value to `variables.tf`.
-
-`terraform apply -var ec2_instance_type=t2.micro`
-
+```hcl
+$ terraform apply -var ec2_instance_type=t2.micro
+```
 Apply this configuration now, using the `-var` command line flag to set the variable value. Since the value we entered is the same as the old value, there will be no changes to apply.
 
 ### Assign values with a `terraform.auto.tfvars` file
-
 Entering variable values manually is time consuming and error prone. Instead, they can be captured in a file. Terraform automatically loads all files in the current directory with the exact name terraform.tfvars or matching *.auto.tfvars. After the configuration with new values is applied, Terraform will highlight the changes and ask for the confirmation to perform the plan.
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/0416a948-19da-4749-afd4-54fcbc66b357)
 
 ## Interpolate variables in strings
-
 Terraform configuration supports string interpolation — inserting the output of an expression into a string. 
 We update the names of the security groups to use the project and environment values from the resource_tags map.
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/fc7f4187-81fd-4533-8900-74936964b60b)
 
 ## Use variable validation to restrict the values 
-
 AWS restricts names of load balancers be no more than 32 characters long and only contain a limited set of characters.
 We add validation blocks to enforce character limits and character sets on both project and environment values.
-```
+```hcl
   validation {
     condition     = length(var.resource_tags["project"]) <= 16 && length(regexall("[^a-zA-Z0-9-]", var.resource_tags["project"])) == 0
     error_message = "The project tag must be no more than 16 characters, and only contain letters, numbers, and hyphens."
@@ -97,16 +87,12 @@ In this case, the regular expression will match a string that contains anything 
 This ensures that the length of the load balancer name does not exceed 32 characters, or contain invalid characters. 
 
 We test the validation rules by specifying an environment tag that is too long. 
-`terraform apply -var='resource_tags={project="my-project",environment="development"}'`
-
+```hcl
+$ terraform apply -var='resource_tags={project="my-project",environment="development"}'
+```
 The command will fail and return the error message specified in the validation block.
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/4c59ab05-64b1-4375-a652-1db5cedffd4a)
 
 ## Clean up infrastructure and cloud workspaces
-
-`terraform destroy`
-
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/c7b32f51-0526-4dfa-af04-e9ce0b2babf4)
-
-
