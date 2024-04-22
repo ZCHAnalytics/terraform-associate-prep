@@ -45,17 +45,19 @@ In main.tf, update the hello module's version to 6.0.0.
 
 ## Reinitialize configuration
 
-terraform init
+```hcl
+$ terraform init
+```
 
 Notice that Terraform downloaded the updated module version and saved it in .terraform/modules/hello. However, Terraform was unable to update the provider version since the new provider version conflicts with the version found in the lock file.
 
-Re-initialize your configuration with the -upgrade flag. This tells Terraform to upgrade the provider to the most recent version that matches the version attribute in that provider's required_version block.
+Re-initialize the configuration with the `-upgrade` flag. This tells Terraform to upgrade the provider to the most recent version that matches the version attribute in that provider's required_version block.
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/74317603-5525-49e4-a658-d9dc47e08447)
 
-
-terraform init -upgrade
-
+```hcl
+$ terraform init -upgrade
+```
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/82c8c6b7-8abe-4fec-8243-59c10abee7e1)
 
 View the .terraform/providers directory structure. Notice that Terraform installed the updated random provider version 3.5.1.
@@ -66,18 +68,16 @@ In the lock file the random provider now uses version 3.5.1. Even though there a
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/15106258-bede-4326-a09a-78c54da50afd)
 
-
 ## Update module arguments
 
-Since you have updated your provider and module version, check whether your configuration is still valid.
-
-terraform validate
-
+Since we have updated our provider and module version, we check whether our configuration is still valid.
+```hcl
+$ terraform validate
+```
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/6fe166f9-ecd1-4509-8ed5-605e64147c3d)
 
 The new version of the hello module expects different arguments from the old version. Replace the entire module "hello" block with the following:
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/7f727bd9-7fbd-4ffc-8b96-f4506f9b1ec5)
 
-Re-validate your configuration.
-
+Re-validate our configuration.
