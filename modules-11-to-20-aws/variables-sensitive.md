@@ -33,6 +33,10 @@ We get an error:
 
 ![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/bdc633f7-6584-42c1-8608-ecd6968f9f27)
 
+After trial and error, we can settle on instance type db.m5.large and it worked! 
+
+![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/ad2f6a52-e63a-4df4-9e12-0886ee5ad3df)
+
 Terraform redacts the values of sensitive varibales from its output when its run a plan, apply, or destroy command. Notice that the password is marked sensitive value, while the username is marked sensitive. The AWS provider considers the password argument for any database instance as sensitive, whether or not it is declared the variable as sensitive, and will redact it as a sensitive value. 
 
 Setting values with a .tfvars file separates sensitive values from the rest of variable values, and makes it clear to people working with the configuration which values are sensitive. We must also be careful not to check .tfvars files with sensitive values into version control. For this reason, GitHub's recommended .gitignore file for Terraform configuration is configured to ignore files matching the pattern *.tfvars.
