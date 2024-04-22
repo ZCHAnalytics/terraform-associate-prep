@@ -14,11 +14,13 @@ First, we declare input variables as sensitive for the database administrator us
 ![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/16485ce0-135e-49ef-a070-f41d29208666)
 
 Then, we update main.tf to reference these variables.
+
 ![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/3c7744c8-3540-4570-bceb-16b518929305)
 
 We can use two different methods to set the sensitive variable values.
 
-*** 1. Set values with a .tfvars file ***
+### Option 1. Set values with a .tfvars file
+  
 We create a new file called secret.tfvars to assign values to the new variables.
 ```hcl
 db_username = "admin"
@@ -28,8 +30,7 @@ We apply these changes using the `-var-file` parameter.
 ```hcl
 $ terraform apply -var-file="secret.tfvars"
 ```
-
-We get an error:
+Oh, no, we get an error:
 
 ![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/bdc633f7-6584-42c1-8608-ecd6968f9f27)
 
@@ -41,30 +42,30 @@ Terraform redacts the values of sensitive varibales from its output when its run
 
 Setting values with a .tfvars file separates sensitive values from the rest of variable values, and makes it clear to people working with the configuration which values are sensitive. We must also be careful not to check .tfvars files with sensitive values into version control. For this reason, GitHub's recommended .gitignore file for Terraform configuration is configured to ignore files matching the pattern *.tfvars.
 
-*** 2. Set values with variables ***
-Set the database administrator username and password using environment variables for Terraform Community Edition or Terraform variables for HCP Terraform.
+### Option 2. Set values with variables
+Set the database administrator username and password using environment variables for Terraform Community Edition or Terraform variables for HCP Terraform. 
 
-HCP Terraform provides secure variable management by encrypting all variable values and allowing to mark them as sensitive during creation. This makes the variable a write-only and prevents all users from viewing its value in the HCP Terraform UI or reading it through the Variables API endpoint. Users with permission to read and write variables can set new values for sensitive variables.
+![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/6b2d8bbd-72a1-4ee2-99e9-feb9fb19247d)
 
-We create the below input variables. Mark them as 'sensitive' by clicking the Sensitive checkbox.
-```hcl
-db_username	admin
-db_password	adifferentpassword
-```
-Now, run terraform apply, and Terraform will assign these values to your new variables.
+Now, run terraform apply, and Terraform will assign these values to the new variables.
 
 ## Reference sensitive variables
-When we use sensitive variables in your Terraform configuration, we can use them as you would any other variable. Terraform will redact these values in command output and log files, and raise an error when it detects that they will be exposed in other ways.
+Terraform redact sensitive values in command output and log files, and raise an error when it detects that they will be exposed in other ways. For instance, if we try to use a sensitive variable to produce an output in the outputs.tf file and apply the change, Terraform will raise an error, since the output is derived from sensitive variables.
 
-If we apply this change, Terraform will raise an error, since the output is derived from sensitive variables.
+```hcl
+output "db_connect_string" {
+  description = "MySQL database connection string"
+  value       = "Server=${aws_db_instance.database.address}; Database=ExampleDB; Uid=${var.db_username}; Pwd=${var.db_password}"
+}
+```
+Terrafrom explains the error and tells how to troubleshoot:
 
-Flag the database connection string output as sensitive, causing Terraform to hide it.
+![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/e2f3317c-facb-4f10-8326-94f16e469a0a)
+
+So, we need to flag the database connection string output as sensitive, causing Terraform to hide it.
+
+![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/44d825c7-a272-4afa-8361-275a64e005cc)
 
 Apply this change to see that Terraform will now redact the database connection string output. 
 
-## Sensitive values in state
-When we run Terraform commands with a local state file, Terraform stores the state as plain text, including variable values, even if they are flagged as sensitive. Terraform needs to store these values in the state so that it can tell if they have been changed them since the last time the configuration was applied.
-
-```bash
-$ grep "password" terraform.tfstate
-```
+![image](https://github.com/ZCHAnalytics/terraform-associate-prep/assets/146954022/75574d30-17ea-42bc-b37d-68154ac8065e)
