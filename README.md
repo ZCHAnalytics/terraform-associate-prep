@@ -13,9 +13,10 @@ I am currently studying for Terraform Associate certification. I created this re
 
 # Terraform Associate Tutorials Completition Progress
 
-Currently, I completed 22 out of 37 modules (59.46%).
+Currently, I completed 23 out of 37 modules (62.16%).
 
 # Study Modules
+
 - Module 1: What is Infrastructure as Code with Terraform? - Completed
 - Module 2: Lock and upgrade provider versions - Completed
 - Module 3: Build infrastructure - Completed
@@ -27,7 +28,7 @@ Currently, I completed 22 out of 37 modules (59.46%).
 - Module 9: Apply Terraform configuration - Completed
 - Module 10: Manage Terraform versions - Completed
 - Module 11: Customize Terraform configuration with variables - Completed
-- Module 12: Protect sensitive input variables - Not Completed
+- Module 12: Protect sensitive input variables - Completed
 - Module 13: Output data from Terraform - Completed
 - Module 14: Query data sources - Not Completed
 - Module 15: Create resource dependencies - Not Completed
