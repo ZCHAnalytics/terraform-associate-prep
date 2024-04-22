@@ -1,4 +1,7 @@
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/a79535cd-bf66-4cd5-b72d-e30ca67c5689)
 
+In a typical Terraform workflow, you apply the entire plan at once. Occasionally you may want to apply only part of a plan, such as when Terraform's state has become out of sync with your resources due to a network failure, a problem with the upstream cloud platform, or a bug in Terraform or its providers. To support this, Terraform lets you target specific resources when you plan, apply, or destroy your infrastructure. 
+You can use Terraform's -target option to target specific resources, modules, or collections of resources. After using resource targeting to fix problems with a Terraform project, be sure to apply changes to the entire configuration to ensure consistency across all resources. 
 
 ## Target the S3 bucket name
 
@@ -57,36 +60,31 @@ output "bucket_name" {
   value       = module.s3_bucket.s3_bucket_id
 }
 ```
-
 The existing resources do not match either the original configuration or the new configuration. We need to apply changes to the entire working directory to make Terraform update the infrastructure to match the current configuration, including the change to the bucket_name output.
 ```hcl
 $ terraform apply
 ```
-After using resource targeting to fix problems with a Terraform project, be sure to apply changes to the entire configuration to ensure consistency across all resources. Remember that you can use terraform plan to see any remaining proposed changes.
+Now, the bucket name and bucket ARN match: :) 
 
-Target specific bucket objects
-Open main.tf and update the contents of the bucket objects. The example configuration uses a single line of example text to represent objects with useful data in them. Change the object contents as shown below.
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/ab40e22c-dad4-47b1-b878-60c88a50d5ce)
 
-You can pass multiple -target options to target several resources at once. Apply this change to two of the bucket object and confirm with a yes.
+
+## Target specific bucket objects
+
+We can pass multiple -target options to target several resources at once. After slightly modifying the main.tf file, we apply the change to two of the bucket object.
 ```hcl
 $ terraform apply -target="aws_s3_object.objects[2]" -target="aws_s3_object.objects[3]"
 ```
-Terraform updated the selected bucket objects and notified you that the changes to your infrastructure may be incomplete.
+Terraform updated the selected bucket objects.
 
-Target bucket object names
-As shown above, you can target individual instances of a collection created using the count or for_each meta-arguments. However, Terraform calculates resource dependencies for the entire resource. In some cases, this can lead to surprising results.
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/8d57599e-cbb6-4ed6-8c01-3ecb27d9afcd)
 
-Remove the prefix argument from the random_pet.object_names resource in main.tf.
-
-Attempt to apply this change to a single bucket object.
-```hcl
-$ terraform apply -target="aws_s3_object.objects[2]"
-```
-Notice that Terraform updated all five of the random_pet.object_name resources, not just the name of the object you targeted. Both random_pet.object_name and aws_s3_object.object use count to provision multiple resources, and each bucket object refers to the name of the same index. However, because the entire aws_s3_bucket_objects.objects resource depends on the entire random_pet.object_names resource, Terraform updated all the names.
-
-## Destroy your infrastructure
-Terraform's destroy command also accepts resource targeting. In the examples above, you referred to individual bucket objects with their index in square brackets, such as aws_s3_bucket_object.objects[2]. You can also refer to the entire collection of resources at once. Destroy the bucket objects, and respond to the confirmation prompt with a yes.
+## Destroy target infrastructure
+Terraform's destroy command also accepts resource targeting. 
 ```hcl
 $ terraform destroy -target="aws_s3_object.objects"
 ```
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/4c3c0a15-c207-467d-9634-f66c2d359ceb)
+
+
 Now destroy the rest of the infrastructure.
