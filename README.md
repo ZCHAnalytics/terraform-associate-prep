@@ -13,30 +13,46 @@ I am currently studying for Terraform Associate certification. I created this re
 
 # Terraform Associate Tutorials 
 
-Currently, I completed xxx out of 37 modules.
+Currently, I completed 22 out of 37 modules.
 
-The exam guide is mostly based on AWS, so I tried exta modules below to get a better understanding of Terraform flexibility and practice its functionality. Some of the extra modules studied were a way to troubleshooting the study material.
+# Study Modules
 
-# Extra modules (different shells, providers, etc)
+- Module 1: What is Infrastructure as Code with Terraform? - Completed
+- Module 2: Lock and upgrade provider versions - Completed
+- Module 3: Build infrastructure - Completed
+- Module 4: Change infrastructure - Completed
+- Module 5: Destroy infrastructure - Completed
+- Module 6: Store remote state - Completed
+- Module 7: Initialize Terraform configuration - Completed
+- Module 8: Create a Terraform plan - Completed
+- Module 9: Apply Terraform configuration - Completed
+- Module 10: Manage Terraform versions - Completed
+- Module 11: Customize Terraform configuration with variables - Completed
+- Module 12: Protect sensitive input variables - Not Completed
+- Module 13: Output data from Terraform - Completed
+- Module 14: Query data sources - Not Completed
+- Module 15: Create resource dependencies - Not Completed
+- Module 16: Perform dynamic operations with functions - Not Completed
+- Module 17: Create dynamic expressions - Not Completed
+- Module 18: Terraform modules overview - Not Completed
+- Module 19: Use registry modules in configuration - Not Completed
+- Module 20: Build and use a local module - Not Completed
+- Module 21: Refactor monolithic Terraform configuration - Not Completed
+- Module 22: Module creation - recommended pattern - Not Completed
+- Module 23: Manage resources in Terraform state - Completed
+- Module 24: Target resources - Completed
+- Module 25: Manage resource drift - Not Completed
+- Module 26: Use refresh-only mode to sync Terraform state - Not Completed
+- Module 27: Troubleshoot Terraform - Not Completed
+- Module 28: Inject secrets into Terraform using the Vault provider - Not Completed
+- Module 29: Log in to HCP Terraform from the CLI - Completed
+- Module 30: Migrate state to HCP Terraform - Not Completed
+- Module 31: What is HCP Terraform - intro and sign up - Completed
+- Module 32: Create a credentials variable set - Completed
+- Module 33: Create a workspace - Completed
+- Module 34: Create infrastructure - Completed
+- Module 35: Modify infrastructure - Completed
+- Module 36: Use VCS-driven workflow - Completed
+- Module 37: Destroy resources and workspaces - Completed
 
-## Azure with Windows PowerShell CLI
-- setting up and testing the environment with NGINX server deployment 
-- modifying infrastructure
-- passing persistent or temporary variables
-- defining outputs
-- migrating states to Terraform Cloud
-
-## Docker with WSL Ubuntu CLI
-
-- creating conda environment
-- setting up and testing Docker environment 
-- adding variables
-- adding outputs
-
-## Amazon Web Services with Ubuntu CLI
- - code for initialising a docker NGINX engine
- - code for initialising an instance on Amazon Web Services 
- - code for changing Ubuntu image in the infrastructure 
- - code for defining outputs
- - code for defining variables
- - code for remote state configuration in Terraform Cloud Workspace 
+Total Modules: 37

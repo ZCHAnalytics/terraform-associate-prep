@@ -4,13 +4,16 @@ import json
 with open('completion_data.json', 'r') as file:
     completion_data = json.load(file)
 
+# Calculate completed module count
+completed_modules = sum(module["Completed"] for module in completion_data["Modules"])
+
 # Read existing content from README.md
 with open('README.md', 'r') as file:
     existing_content = file.read()
 
 # Update README content
 readme_content = existing_content.split("Currently, I completed ")[0]  # Get content before the completion status
-readme_content += f"Currently, I completed {completion_data['CompletedModules']} out of {completion_data['TotalModules']} modules.\n\n"  # Add completion status
+readme_content += f"Currently, I completed {completed_modules} out of {completion_data['TotalModules']} modules.\n\n"  # Add completion status
 readme_content += "# Study Modules\n\n"
 for module in completion_data["Modules"]:
     status = "Completed" if module["Completed"] else "Not Completed"
