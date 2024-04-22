@@ -107,4 +107,3 @@ We then apply the configuration, which will confirm that Terraform changed the o
 ## Destroy infrastructure
 Terraform also updates the state file when `terraform destroy` operation runs.
 The terraform.tfstate file still exists, but does not contain any resources. The terraform show can be used to confirm that the state file is empty. 
-Open the terraform.tfstate file in your file editor. The empty resources attribute confirms Terraform destroyed all your previous resources.
