@@ -1,17 +1,7 @@
-# Initialize Terraform configuration
+![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/26fcc77a-f784-4740-864f-360a23f55e9f)
 
-## Prerequisites
-- Terraform v1.6+ installed locally.
-- A Terraform Cloud account with Terraform Cloud locally authenticated.
+## Initialize the workspace
 
-## Clone the example repository
-
-
-## Initialize your workspace
-
-terraform.tf 
-
-terraform init
 - First, Terraform initializes the backend.
 - Next, Terraform downloads the modules required by your configuration.
 - Next, Terraform downloads the providers required by your configuration.
@@ -20,11 +10,9 @@ terraform init
   
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/dc042f32-6a0f-4790-ba30-887d6b5cd90c)
 
-
-## Validate your configuration
+## Validate the configuration
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/f60e07e1-7bbe-41aa-ab60-6730d7f02474)
-
 
 ## Explore the `.terraform` directory
 
@@ -37,19 +25,16 @@ In terraform.tf, update the random provider's version to 3.5.1.
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/59d86f47-5ce7-4c96-8080-de6b316dc51e)
 
-
 In main.tf, update the hello module's version to 6.0.0.
 
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/b82f70a8-e56f-4b1e-bd96-fc2cf3698bc9)
-
 
 ## Reinitialize configuration
 
 ```hcl
 $ terraform init
 ```
-
-Notice that Terraform downloaded the updated module version and saved it in .terraform/modules/hello. However, Terraform was unable to update the provider version since the new provider version conflicts with the version found in the lock file.
+Terraform downloaded the updated module version and saved it in .terraform/modules/hello. However, Terraform was unable to update the provider version since the new provider version conflicts with the version found in the lock file.
 
 Re-initialize the configuration with the `-upgrade` flag. This tells Terraform to upgrade the provider to the most recent version that matches the version attribute in that provider's required_version block.
 
@@ -69,7 +54,6 @@ In the lock file the random provider now uses version 3.5.1. Even though there a
 ![image](https://github.com/ZCHAnalytics/terraform-modules/assets/146954022/15106258-bede-4326-a09a-78c54da50afd)
 
 ## Update module arguments
-
 Since we have updated our provider and module version, we check whether our configuration is still valid.
 ```hcl
 $ terraform validate
