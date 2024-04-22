@@ -9,11 +9,11 @@
 <p>
 <hr>
 
-I am currently studying for Terraform Associate certification. I created this repository as a study aid and keep track of my progress. 
+I am currently studying for Terraform Associate certification. I created this repository as a study aid, with a python script that tracks the number of percentage of completed modules. 
 
-# Terraform Associate Tutorials 
+# Terraform Associate Tutorials Completition Progress
 
-Currently, I completed 22 out of 37 modules.
+Currently, I completed 22 out of 37 modules (59.46%).
 
 # Study Modules
 
