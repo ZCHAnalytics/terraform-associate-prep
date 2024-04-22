@@ -1,0 +1,192 @@
+{
+    "StudyGuide": "Terraform Associate certification",
+    "TotalModules": 37,
+    "Modules": [
+      {
+        "ModuleNumber": 1,
+        "Title": "What is Infrastructure as Code with Terraform?",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 2,
+        "Title": "Lock and upgrade provider versions",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 3,
+        "Title": "Build infrastructure",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 4,
+        "Title": "Change infrastructure",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 5,
+        "Title": "Destroy infrastructure",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 6,
+        "Title": "Store remote state",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 7,
+        "Title": "Initialize Terraform configuration",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 8,
+        "Title": "Create a Terraform plan",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 9,
+        "Title": "Apply Terraform configuration",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 10,
+        "Title": "Manage Terraform versions",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 11,
+        "Title": "Customize Terraform configuration with variables",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 12,
+        "Title": "Protect sensitive input variables",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 13,
+        "Title": "Output data from Terraform",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 14,
+        "Title": "Query data sources",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 15,
+        "Title": "Create resource dependencies",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 16,
+        "Title": "Perform dynamic operations with functions",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 17,
+        "Title": "Create dynamic expressions",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 18,
+        "Title": "Terraform modules overview",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 19,
+        "Title": "Use registry modules in configuration",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 20,
+        "Title": "Build and use a local module",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 21,
+        "Title": "Refactor monolithic Terraform configuration",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 22,
+        "Title": "Module creation - recommended pattern",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 23,
+        "Title": "Manage resources in Terraform state",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 24,
+        "Title": "Target resources",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 25,
+        "Title": "Manage resource drift",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 26,
+        "Title": "Use refresh-only mode to sync Terraform state",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 27,
+        "Title": "Troubleshoot Terraform",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 28,
+        "Title": "Inject secrets into Terraform using the Vault provider",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 29,
+        "Title": "Log in to HCP Terraform from the CLI",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 30,
+        "Title": "Migrate state to HCP Terraform",
+        "Completed": false
+      },
+      {
+        "ModuleNumber": 31,
+        "Title": "What is HCP Terraform - intro and sign up",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 32,
+        "Title": "Create a credentials variable set",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 33,
+        "Title": "Create a workspace",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 34,
+        "Title": "Create infrastructure",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 35,
+        "Title": "Modify infrastructure",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 36,
+        "Title": "Use VCS-driven workflow",
+        "Completed": true
+      },
+      {
+        "ModuleNumber": 37,
+        "Title": "Destroy resources and workspaces",
+        "Completed": true
+      }
+    ]
+  }
+  
