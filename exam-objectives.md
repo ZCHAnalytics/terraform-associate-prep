@@ -1,23 +1,23 @@
 Exam objectives
 
-# 1	Understand infrastructure as code (IaC) concepts
+# 1	Understand infrastructure as code (IaC) concepts v
 - [x] Explain what IaC is 
 -	[x] Describe advantages of IaC patterns 
 
-# 2	Understand the purpose of Terraform (vs other IaC)
+# 2	Understand the purpose of Terraform (vs other IaC) v
 - [x] 2a	Explain multi-cloud and provider-agnostic benefits
 - [x] 2b	Explain the benefits of state
 
 Use cases: 
-- [x] Deploy federated multi-cloud Kubernetes clusters
+- [x] Deploy federated multi-cloud Kubernetes clusters v
   
-# 3	Understand Terraform basics
+# 3	Understand Terraform basics v
 - [x] 3a	Install and version Terraform providers
 - [x] 3b	Describe plugin-based architecture
 - [x] 3c	Write Terraform configuration using multiple providers
 - [x] 3d	Describe how Terraform finds and fetches providers
 
-# 4	Use Terraform outside of core workflow
+# 4	Use Terraform outside of core workflow v
 - [x] 4a	Describe when to use terraform import to import existing infrastructure into your Terraform state
 - [x] 4b	Use terraform state to view Terraform state
 - [x] 4c	Describe when to enable verbose logging and what the outcome/value is
@@ -28,7 +28,7 @@ Use cases:
 - [x] 5c	Describe variable scope within modules/child modules
 - [x] 5d	Set module version
 
-# 6	Use the core Terraform workflow
+# 6	Use the core Terraform workflow v
 - [x] 6a	Describe Terraform workflow ( Write -> Plan -> Create )
 - [x] 6b	Initialize a Terraform working directory (terraform init)
 - [x] 6c	Validate a Terraform configuration (terraform validate)
